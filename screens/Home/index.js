@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { StyleSheet, Text, View, TouchableHighlight } from 'react-native'
+import { styles } from './styles'
 
 class Home extends Component {
   render() {
-    const navigate = this.props.navigation
-    const screenProps = this.props.screenProps
-    const { storiesCount } = this.props
+    const { props } = this
+    const { navigate } = props.navigation
+    const { screenProps } = props
+    const { storiesCount } = props
 
     return (
       <View style={styles.container}>
@@ -36,18 +38,3 @@ function mapStateToProps(state) {
 
 export default connect(mapStateToProps)(Home)
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#556c84',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  text: {
-    color: '#fff',
-    padding: 10,
-    borderRadius: 4,
-    borderWidth: 3,
-    borderColor: '#d6d7da',
-  }
-});
