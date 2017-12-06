@@ -15,16 +15,16 @@ class Home extends Component {
         <Text
           style={styles.text}
           onPress={() =>
-          navigate('CreateGame', { name: 'Jane' })}>
+          navigate('CreateGame')}>
           New Game
         </Text>
 
-        <Text style={{marginTop: 20}}>
+        {/* <Text style={{marginTop: 20}}>
           Story Count: { storiesCount }
         </Text>
         <TouchableHighlight onPress={() => { screenProps.addStory() }}>
           <Text>Add Story</Text>
-        </TouchableHighlight>
+        </TouchableHighlight> */}
       </View>
     )
   }
