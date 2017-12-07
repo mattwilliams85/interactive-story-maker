@@ -5,10 +5,9 @@ import { styles } from './styles'
 
 class Home extends Component {
   render() {
-    const { props } = this
-    const { navigate } = props.navigation
-    const { screenProps } = props
-    const { storiesCount } = props
+    const { navigate } = this.props.navigation
+    const { screenProps } = this.props
+    const stories = this.props.stories
 
     return (
       <View style={styles.container}>
@@ -19,12 +18,12 @@ class Home extends Component {
           New Game
         </Text>
 
-        {/* <Text style={{marginTop: 20}}>
-          Story Count: { storiesCount }
-        </Text>
-        <TouchableHighlight onPress={() => { screenProps.addStory() }}>
-          <Text>Add Story</Text>
-        </TouchableHighlight> */}
+        {stories.map((story, i) =>
+          <Text 
+            key={i}>
+            {story.title}
+          </Text>
+        )}
       </View>
     )
   }
@@ -33,6 +32,7 @@ class Home extends Component {
 function mapStateToProps(state) {
   return {
     storiesCount: state.storiesCount,
+    stories: state.stories,
   }
 }
 

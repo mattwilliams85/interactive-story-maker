@@ -1,7 +1,8 @@
 import * as types from './types'
 
-export function addStory() {
+export function createStory(data) {
   return {
-    type: types.ADD_STORY,
+    type: types.CREATE_STORY,
+    data: data
   }
 }

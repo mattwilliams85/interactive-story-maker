@@ -19,7 +19,15 @@ function configureStore(initialState) {
   return createStore(reducer, initialState, enhancer)
 }
 
-const store = configureStore({})
+const store = configureStore({
+  // TODO: remove this
+  stories: [
+    {
+      title: 'Example Adventure',
+      introduction: 'This is an example story. We suggest you use your introduction to get people interested in your story.',
+    }
+  ]
+})
 
 export default class App extends Component {
   render() {

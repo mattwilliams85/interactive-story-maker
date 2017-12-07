@@ -1,12 +1,11 @@
 import createReducer from '../util/createReducer'
 import * as types from '../actions/types'
 
-export const storiesIndex = createReducer({}, {
+export const stories = createReducer({}, {
+  [types.CREATE_STORY](state, action) {
+    const { title, introduction } = action.data
+    const newStory = { title, introduction }
 
-})
-
-export const storiesCount = createReducer(0, {
-  [types.ADD_STORY](state, action) {
-    return state + 1
+    return [...state, newStory]
   }
 })
