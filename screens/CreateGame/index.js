@@ -6,34 +6,25 @@ import { styles } from './styles'
 import FormInput from '../../components/FormInput';
 
 class CreateGame extends Component {  
-  constructor(props) {
-    super(props)
-
-    this.handleSubmit = this.handleSubmit.bind(this)
-  }
-
-  handleSubmit() {
-    console.log('click')
-  }
-
   render() {
-    const { props, handleSubmit } = this
-    const { navigate } = props.navigation
+    const { handleSubmit } = this.props
+    const { navigate } = this.props.navigation
     
     return (
       <View style={styles.container}>
         <Text>Title</Text>
-        <TextInput 
-          style={styles.input}
+        <Field
+          name='title' 
           placeholder={'Story Title'}
-        />
+          component={FormInput} />
         <Text>Introduction</Text>
-        <TextInput 
-          style={[styles.input, styles.textArea]}
+        <Field 
+          name='Introduction'
           multiline={true}
           numberOfLines={4}
-          placeholder={'Once upon a time...'} />
-        <TouchableOpacity onPress={this.handleSubmit}>
+          placeholder={'Once upon a time...'}
+          component={FormInput} />
+        <TouchableOpacity onPress={handleSubmit}>
           <Text style={styles.button}>Submit</Text>
         </TouchableOpacity>
       </View>

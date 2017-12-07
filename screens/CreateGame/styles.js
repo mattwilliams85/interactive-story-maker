@@ -14,16 +14,5 @@ export const styles = StyleSheet.create({
     lineHeight: 30,
     textAlign: 'center',
     width: 250
-  },
-  input: {
-    borderColor: '#555',
-    borderWidth: 1,
-    height: 37,
-    width: 250,
-    paddingLeft: 10,
-    marginBottom: 10,
-  },
-  textArea: {
-    height: 200
   }
 });
