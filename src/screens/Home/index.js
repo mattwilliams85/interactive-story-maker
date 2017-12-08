@@ -19,10 +19,7 @@ class Home extends Component {
         </Text>
 
         {stories.map((story, i) =>
-          <Text 
-            key={i}>
-            {story.title}
-          </Text>
+          <Text key={i}>{story.title}</Text>
         )}
       </View>
     )

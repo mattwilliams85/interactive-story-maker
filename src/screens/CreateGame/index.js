@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import { reduxForm, Field } from 'redux-form';
-import { Text, View, TouchableOpacity } from 'react-native';
+import { reduxForm, Field } from 'redux-form'
+import { Text, View, TouchableOpacity } from 'react-native'
 
 import { styles } from './styles'
-import FormInput from '../../components/FormInput';
+import FormInput from '../../components/FormInput'
 
 class CreateGame extends Component {
   constructor(props) {
@@ -14,7 +14,9 @@ class CreateGame extends Component {
 
   submit(data) {
     const { navigate } = this.props.navigation
-    this.props.screenProps.createStory(data)
+    const { createStory } = this.props.screenProps
+
+    createStory(data)
     navigate('Home')
   }
 
@@ -35,6 +37,7 @@ class CreateGame extends Component {
           name='introduction'
           multiline={true}
           numberOfLines={4}
+          height={'50%'}
           placeholder={'Once upon a time...'}
           component={FormInput} />
         <TouchableOpacity onPress={handleSubmit(submit)}>

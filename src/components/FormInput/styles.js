@@ -10,6 +10,6 @@ export const styles = StyleSheet.create({
         marginBottom: 10,
     },
     textArea: {
-        height: 200
+        height: 200,
     }
-});
+})

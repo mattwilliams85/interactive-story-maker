@@ -14,4 +14,4 @@ export const styles = StyleSheet.create({
     borderWidth: 3,
     borderColor: '#d6d7da',
   }
-});
+})
