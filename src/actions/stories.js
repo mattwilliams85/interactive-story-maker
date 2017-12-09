@@ -1,8 +1,15 @@
 import * as types from './types'
+import { storiesCtrl } from '../firebase'
 
-export function createStory(data) {
+export const createStory = (data) => (dispatch) => {
+  return storiesCtrl.createStory(data).then((story) => {
+    dispatch(setStory(story))
+  })
+}
+
+function setStory(story) {
   return {
     type: types.CREATE_STORY,
-    data: data
+    data: story
   }
-}
+} 
