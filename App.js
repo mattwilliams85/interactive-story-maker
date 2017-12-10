@@ -4,7 +4,6 @@ import { AppRegistry } from 'react-native'
 import { createStore, applyMiddleware, compose } from 'redux'
 import thunkMiddleware from 'redux-thunk'
 import { createLogger } from 'redux-logger'
-import { initialState } from './src/config/initialState'
 import AppContainer from './src/components/AppContainer'
 import reducer from './src/reducers'
 
@@ -20,7 +19,7 @@ function configureStore(initialState) {
   return createStore(reducer, initialState, enhancer)
 }
 
-const store = configureStore(initialState)
+const store = configureStore({})
 
 export default class App extends Component {
   render() {

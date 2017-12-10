@@ -1,1 +1,2 @@
 export const CREATE_STORY = 'CREATE_STORY'
+export const FETCH_STORIES = 'FETCH_STORIES'

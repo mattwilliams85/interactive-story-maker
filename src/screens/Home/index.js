@@ -4,6 +4,12 @@ import { StyleSheet, Text, View, TouchableHighlight } from 'react-native'
 import { styles } from './styles'
 
 class Home extends Component {
+  componentWillMount() {
+    const { subscribeStories } = this.props.screenProps
+
+    subscribeStories()
+  }
+
   render() {
     const { navigate } = this.props.navigation
     const { screenProps } = this.props
@@ -11,15 +17,23 @@ class Home extends Component {
 
     return (
       <View style={styles.container}>
-        <Text
-          style={styles.text}
-          onPress={() =>
-          navigate('CreateGame')}>
-          New Game
-        </Text>
+        <TouchableHighlight
+          style={styles.button}
+          onPress={() => navigate('CreateGame')}>
+          <Text>New Story</Text>
+        </TouchableHighlight>
 
         {stories.map((story, i) =>
-          <Text key={i}>{story.title}</Text>
+          <View key={i}>
+            <Text style={styles.title}>{story.title}</Text>
+            <Text 
+              style={styles.introduction}
+              numberOfLines={1}
+              ellipsizeMode={'tail'}>
+              {story.introduction}
+            </Text>
+            <Text style={styles.introduction}>==============</Text>
+          </View>
         )}
       </View>
     )

@@ -1,24 +1,30 @@
 import { firebaseDB } from './';
+import { objectToArray } from '../util/objectToArray'
 
 const userId = 1
+const path = `users/${userId}/games/`
 
 export const storiesCtrl = {
-  createStory(data) {
+  create(data) {
     const newStory = {
       title: data.title,
       introduction: data.introduction,
     }
     
     return firebaseDB
-      .ref('users/' + userId + '/games/')
+      .ref(path)
       .push(newStory)
-      .then(result => { return newStory })
   },
 
-  fetchStories() {
-    return firebaseDB
-      .ref('users/' + userId + '/games/')
-      .once('value')
-      .then(result => { return result.val() })
-  }
+  subscribe(dispatch, type) {
+    firebaseDB.ref(path).on('value', (snap) => {
+      console.log('TYPE', type)
+      dispatch({
+        type: type,
+        payload: objectToArray(snap.val())
+      })
+    })
+  },
+
+
 }

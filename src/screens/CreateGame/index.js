@@ -27,11 +27,13 @@ class CreateGame extends Component {
     
     return (
       <View style={styles.container}>
+
         <Text>Title</Text>
         <Field
           name='title' 
           placeholder={'Story Title'}
           component={FormInput} />
+
         <Text>Introduction</Text>
         <Field 
           name='introduction'
@@ -40,9 +42,11 @@ class CreateGame extends Component {
           height={'50%'}
           placeholder={'Once upon a time...'}
           component={FormInput} />
+
         <TouchableOpacity onPress={handleSubmit(submit)}>
           <Text style={styles.button}>Submit</Text>
         </TouchableOpacity>
+        
       </View>
     )
   }

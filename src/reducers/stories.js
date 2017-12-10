@@ -1,13 +1,15 @@
 import createReducer from '../util/createReducer'
-import * as types from '../actions/types'
+import * as type from '../actions/types'
 
-const initialState = {}
+const initialState = []
 
-export const stories = createReducer(initialState, {
-  [types.CREATE_STORY](state, action) {
-    const { title, introduction } = action.data
-    const newStory = { title, introduction }
-
-    return [...state, newStory]
+export function stories(state = initialState, action) {
+  switch (action.type) {
+    case type.CREATE_STORY:
+      return state
+    case type.FETCH_STORIES:
+      return action.payload
+    default:
+      return state
   }
-})
+}
