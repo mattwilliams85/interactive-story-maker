@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { StyleSheet, Text, View, TouchableHighlight } from 'react-native'
+import { Text, View, TouchableHighlight } from 'react-native'
+import Delete from './Delete'
 import { styles } from './styles'
 
 class Home extends Component {
@@ -11,9 +12,10 @@ class Home extends Component {
   }
 
   render() {
-    const { navigate } = this.props.navigation
-    const { screenProps } = this.props
-    const stories = this.props.stories
+    const { props } = this
+    const { navigate } = props.navigation
+    const { screenProps } = props
+    const stories = props.stories
 
     return (
       <View style={styles.container}>
@@ -32,6 +34,7 @@ class Home extends Component {
               ellipsizeMode={'tail'}>
               {story.introduction}
             </Text>
+            <Delete storyId={story._key} {...props} />
             <Text style={styles.introduction}>==============</Text>
           </View>
         )}

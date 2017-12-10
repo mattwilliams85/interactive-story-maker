@@ -16,9 +16,12 @@ export const storiesCtrl = {
       .push(newStory)
   },
 
+  remove(id) {
+    return firebaseDB.ref(path + id).remove()
+  },
+
   subscribe(dispatch, type) {
     firebaseDB.ref(path).on('value', (snap) => {
-      console.log('TYPE', type)
       dispatch({
         type: type,
         payload: objectToArray(snap.val())

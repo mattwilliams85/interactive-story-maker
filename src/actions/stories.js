@@ -3,8 +3,12 @@ import { storiesCtrl } from '../firebase'
 
 export const createStory = (data) => (dispatch) => {
   return storiesCtrl.create(data).then((story) => {
-    dispatch({ type: types.CREATE_STORY })
+    dispatch({ type: type.CREATE_STORY })
   })
+}
+
+export const removeStory = (id) => (dispatch) => {
+  return storiesCtrl.remove(id)
 }
 
 export const subscribeStories = (data) => (dispatch) => {

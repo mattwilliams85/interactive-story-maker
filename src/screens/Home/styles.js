@@ -23,5 +23,9 @@ export const styles = StyleSheet.create({
     marginBottom: 30,
     borderRadius: 4,
     borderWidth: 3,
+  },
+  remove: {
+    color: 'blue',
+    textAlign: 'center'
   }
 })
