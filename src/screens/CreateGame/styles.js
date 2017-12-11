@@ -7,7 +7,8 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
   button: {
-    textAlign: 'center',
+    marginTop: 20,
+    alignItems: 'center',
     padding: 5,
     width: 300,
     marginBottom: 30,

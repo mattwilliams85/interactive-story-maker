@@ -7,6 +7,6 @@ export default class FormInput extends Component {
         const { input, ...inputProps } = this.props
         const { Label } = this.props
 
-        return <TextInput style={styles.input} onChangeText={input.onChange} {...inputProps} />
+        return <TextInput style={styles.input} {...inputProps} {...input} />
     }
 }

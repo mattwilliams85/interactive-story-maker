@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { reduxForm, Field } from 'redux-form'
 import { Text, View, TouchableOpacity } from 'react-native'
-
+import { connect } from 'react-redux'
 import { styles } from './styles'
 import FormInput from '../../components/FormInput'
 
@@ -10,7 +10,7 @@ class CreateGame extends Component {
     super(props)
 
     this.submit = this.submit.bind(this)
-  }  
+  }
 
   submit(data) {
     const { navigate } = this.props.navigation
@@ -32,6 +32,7 @@ class CreateGame extends Component {
         <Field
           name='title' 
           placeholder={'Story Title'}
+          width={300}
           component={FormInput} />
 
         <Text>Introduction</Text>
@@ -40,11 +41,14 @@ class CreateGame extends Component {
           multiline={true}
           numberOfLines={4}
           height={'50%'}
+          width={300}
           placeholder={'Once upon a time...'}
           component={FormInput} />
 
-        <TouchableOpacity onPress={handleSubmit(submit)}>
-          <Text style={styles.button}>Submit</Text>
+        <TouchableOpacity 
+          onPress={handleSubmit(submit)}
+          style={styles.button}>
+          <Text>Submit</Text>
         </TouchableOpacity>
         
       </View>
@@ -52,8 +56,16 @@ class CreateGame extends Component {
   }
 }
 
-export default reduxForm({
-  form: 'createGame'
+CreateGame = reduxForm({
+  form: 'CreateGame',
+  enableReinitialize: true,
 })(CreateGame)
 
+CreateGame = connect(
+  state => ({
+    initialValues: state.stories.activeStory
+  }),
+)(CreateGame)
+
+export default CreateGame
 

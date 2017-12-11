@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { TouchableHighlight, Text } from 'react-native'
 import { styles } from './styles'
 
-export default class Delete extends Component {
+export default class Edit extends Component {
   constructor(props) {
     super(props)
 
@@ -10,10 +10,12 @@ export default class Delete extends Component {
   }
 
   handleTouch() {
-    const { removeStory } = this.props.screenProps
-    const { storyId } = this.props
-    
-    removeStory(storyId)
+    const { editStory } = this.props.screenProps
+    const { story } = this.props
+    const { navigate } = this.props.navigation
+
+    editStory(story)
+    navigate('CreateGame')
   }
 
   render() {
@@ -21,7 +23,7 @@ export default class Delete extends Component {
 
     return (
       <TouchableHighlight onPress={handleTouch}>
-        <Text style={styles.option}>REMOVE</Text>
+        <Text style={styles.option}>EDIT</Text>
       </TouchableHighlight>
     )
   }
