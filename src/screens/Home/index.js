@@ -14,9 +14,9 @@ class Home extends Component {
   }
 
   componentWillMount() {
-    const { subscribeStories } = this.props.screenProps
+    const { fetchStories } = this.props.screenProps
     
-    subscribeStories()
+    fetchStories()
   }
 
   handleTouch() {

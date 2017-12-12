@@ -1,5 +1,5 @@
-import { firebaseDB } from './';
-import { objectToArray } from '../util/objectToArray'
+import { firebaseDB } from '../';
+import { objectToArray } from '../../util'
 
 const userId = 1
 const path = `users/${userId}/games/`
@@ -11,9 +11,7 @@ export const storiesCtrl = {
       introduction: data.introduction,
     }
     
-    return firebaseDB
-      .ref(path)
-      .push(newStory)
+    return firebaseDB.ref(path).push(newStory)
   },
 
   remove(id) {
@@ -21,10 +19,10 @@ export const storiesCtrl = {
   },
 
   subscribe(dispatch, type) {
-    firebaseDB.ref(path).on('value', (snap) => {
+    firebaseDB.ref(path).on('value', (result) => {
       dispatch({
         type: type,
-        payload: objectToArray(snap.val())
+        payload: objectToArray(result.val())
       })
     })
   },

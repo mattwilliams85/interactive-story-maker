@@ -9,23 +9,25 @@ export const createStory = (data) => (dispatch) => {
   })
 }
 
-export const removeStory = (id) => (dispatch) => {
-  return storiesCtrl.remove(id)
-}
-
-export const subscribeStories = (data) => (dispatch) => {
-  dispatch({ type: type.FETCH_STORIES })
-
-  return storiesCtrl.subscribe(dispatch, type.RECEIVE_STORIES)
+export const clearStory = (data) => (dispatch) => {
+  dispatch({ type: type.CLEAR_STORY })
 }
 
 export const editStory = (data) => (dispatch) => {
-  dispatch({ 
+  dispatch({
     type: type.EDIT_STORY,
     data
   })
 }
 
-export const clearStory = (data) => (dispatch) => {
-  dispatch({ type: type.CLEAR_STORY})
+export const fetchStories = (data) => (dispatch) => {
+  dispatch({ type: type.FETCH_STORIES })
+
+  return storiesCtrl.subscribe(dispatch, type.RECEIVE_STORIES)
 }
+
+export const removeStory = (id) => (dispatch) => {
+  return storiesCtrl.remove(id)
+}
+
+

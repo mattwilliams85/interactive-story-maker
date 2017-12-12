@@ -13,15 +13,16 @@ class CreateGame extends Component {
   }
 
   submit(data) {
+    const { initialValues } = this.props
     const { navigate } = this.props.navigation
-    const { createStory } = this.props.screenProps
+    const { createStory, updateStory } = this.props.screenProps
 
-    createStory(data)
+    initialValues ? updateStory(data) : createStory(data)
     navigate('Home')
   }
 
   render() {
-    const { handleSubmit } = this.props
+    const { handleSubmit, initialValues } = this.props
     const { navigate } = this.props.navigation
     const { submit } = this
     
@@ -48,7 +49,10 @@ class CreateGame extends Component {
         <TouchableOpacity 
           onPress={handleSubmit(submit)}
           style={styles.button}>
-          <Text>Submit</Text>
+          { initialValues ?
+            <Text>Update</Text> :
+            <Text>Submit</Text>
+          }
         </TouchableOpacity>
         
       </View>
@@ -63,7 +67,7 @@ CreateGame = reduxForm({
 
 CreateGame = connect(
   state => ({
-    initialValues: state.stories.activeStory
+    initialValues: state.stories.activeStory,
   }),
 )(CreateGame)
 
