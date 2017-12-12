@@ -6,7 +6,8 @@ export const Navigation = StackNavigator({
   Home: {
     screen: Home,
     navigationOptions: {
-      title: 'Home'
+      title: 'Home',
+      headerBackTitle: 'Back',
     }
   },
   CreateGame: {

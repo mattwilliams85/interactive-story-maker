@@ -8,6 +8,7 @@ const initialState = {
 export function stories(state = initialState, action) {
   switch (action.type) {
     case type.CREATE_STORY:
+    case type.UPDATE_STORY:
       return {
         ...state,
         isLoading: false,

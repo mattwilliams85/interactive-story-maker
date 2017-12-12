@@ -30,4 +30,10 @@ export const removeStory = (id) => (dispatch) => {
   return storiesCtrl.remove(id)
 }
 
+export const updateStory = (data) => (dispatch) => {
+  return storiesCtrl.update(data).then((story) => {
+    dispatch({ type: type.UPDATE_STORY })
+  })
+}
+
 

@@ -27,5 +27,12 @@ export const storiesCtrl = {
     })
   },
 
+  update(data) {
+    const updatedStory = {
+      title: data.title,
+      introduction: data.introduction,
+    }
 
+    return firebaseDB.ref(`${path}/${data._key}`).set(updatedStory)
+  }
 }

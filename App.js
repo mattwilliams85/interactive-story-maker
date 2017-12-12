@@ -7,13 +7,13 @@ import { createLogger } from 'redux-logger'
 import AppContainer from './src/components/AppContainer'
 import reducer from './src/reducers'
 
-const loggerMiddleware = createLogger({ predicate: (getState, action) => __DEV__ })
+// const loggerMiddleware = createLogger({ predicate: (getState, action) => __DEV__ })
 
 function configureStore(initialState) {
   const enhancer = compose(
     applyMiddleware(
       thunkMiddleware,
-      loggerMiddleware,
+      // loggerMiddleware,
     )
   )
   return createStore(reducer, initialState, enhancer)
