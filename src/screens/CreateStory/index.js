@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import { styles } from './styles'
 import FormInput from '../../components/FormInput'
 
-class CreateGame extends Component {
+class CreateStory extends Component {
   constructor(props) {
     super(props)
 
@@ -60,16 +60,16 @@ class CreateGame extends Component {
   }
 }
 
-CreateGame = reduxForm({
-  form: 'CreateGame',
+CreateStory = reduxForm({
+  form: 'CreateStory',
   enableReinitialize: true,
-})(CreateGame)
+})(CreateStory)
 
-CreateGame = connect(
+CreateStory = connect(
   state => ({
     initialValues: state.stories.activeStory,
   }),
-)(CreateGame)
+)(CreateStory)
 
-export default CreateGame
+export default CreateStory
 

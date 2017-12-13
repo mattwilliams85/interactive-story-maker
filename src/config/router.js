@@ -1,22 +1,25 @@
 import { StackNavigator } from 'react-navigation'
-import Home from '../screens/Home'
-import CreateGame from '../screens/CreateGame'
+import { CreateStory, Home, StoryScenes } from '../screens'
 
 export const Navigation = StackNavigator({
   Home: {
     screen: Home,
     navigationOptions: {
       title: 'Home',
-      headerBackTitle: 'Back',
     }
   },
-  CreateGame: {
-    screen: CreateGame,
+  CreateStory: {
+    screen: CreateStory,
     navigationOptions: {
-      title: 'New Game',
-      headerBackTitle: 'Back',
+      title: 'New Story',
     }
   },
+  StoryScenes: {
+    screen: StoryScenes,
+    navigationOptions: {
+      title: 'Scenes',
+    }
+  }
 })
 
 

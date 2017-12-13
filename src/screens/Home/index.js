@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { Text, View, TouchableHighlight } from 'react-native'
 import Delete from './Delete'
 import Edit from './Edit'
+import ViewScenes from './ViewScenes'
 import Spinner from '../../components/Spinner'
 import { styles } from './styles'
 
@@ -23,7 +24,7 @@ class Home extends Component {
     const { clearStory } = this.props.screenProps
     const { navigate } = this.props.navigation
     
-    navigate('CreateGame')
+    navigate('CreateStory')
     clearStory()
   }
 
@@ -52,6 +53,7 @@ class Home extends Component {
               {story.introduction}
             </Text>
             <View style={styles.options}>
+              <ViewScenes storyId={story._key} {...props} />
               <Edit story={story} {...props} />
               <Delete storyId={story._key} {...props} />
             </View> 
