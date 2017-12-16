@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { TouchableHighlight, Text } from 'react-native'
 import { styles } from './styles'
 
-export default class ViewScenes extends Component {
+export default class Link extends Component {
   constructor(props) {
     super(props)
 
@@ -10,20 +10,20 @@ export default class ViewScenes extends Component {
   }
 
   handleTouch() {
-    const { editStory } = this.props.screenProps
-    const { story } = this.props
+    const { data, destination, action } = this.props
     const { navigate } = this.props.navigation
 
-    navigate('StoryScenes')
+    action(data)
+    navigate(destination)
   }
-
 
   render() {
     const { handleTouch } = this
+    const { text } = this.props
 
     return (
       <TouchableHighlight onPress={handleTouch}>
-        <Text style={styles.option}>VIEW</Text>
+        <Text style={styles.link}>{text}</Text>
       </TouchableHighlight>
     )
   }

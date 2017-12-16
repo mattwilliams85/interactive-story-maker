@@ -1,10 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Text, View, TouchableHighlight } from 'react-native'
-import Delete from './Delete'
-import Edit from './Edit'
-import ViewScenes from './ViewScenes'
-import Spinner from '../../components/Spinner'
+import { Spinner, Button, Link } from '../../components'
+import { globalStyles } from '../../styles/global'
 import { styles } from './styles'
 
 class Home extends Component {
@@ -31,35 +29,51 @@ class Home extends Component {
   render() {
     const { props, handleTouch } = this
     const { screenProps } = props
+    const { editStory, removeStory } = props.screenProps
     const stories = props.stories.entities
 
     return (
-      <View style={styles.container}>
-        <TouchableHighlight
-          style={styles.button}
-          onPress={handleTouch}>
-          <Text>New Story</Text>
-        </TouchableHighlight>
+      <View style={globalStyles.container}>
+        <View style={globalStyles.section}>
+          <Button 
+            text={'New Story'} 
+            onPress={handleTouch}
+            position={'top'} />
 
-        <Spinner/>
+          <Spinner/>
 
-        {stories.map((story, i) =>
-          <View key={i} style={styles.card}>
-            <Text style={styles.title}>{story.title}</Text>
-            <Text 
-              style={styles.introduction}
-              numberOfLines={1}
-              ellipsizeMode={'tail'}>
-              {story.introduction}
-            </Text>
-            <View style={styles.options}>
-              <ViewScenes storyId={story._key} {...props} />
-              <Edit story={story} {...props} />
-              <Delete storyId={story._key} {...props} />
-            </View> 
-        
-          </View>
-        )}
+          {stories.map((story, i) =>
+            <View key={i} style={styles.card}>
+              <Text style={styles.title}>{story.title}</Text>
+              <Text 
+                style={styles.introduction}
+                numberOfLines={1}
+                ellipsizeMode={'tail'}>
+                {story.introduction}
+              </Text>
+              <View style={styles.options}>
+                <Link 
+                  text={'VIEW'} 
+                  data={story} 
+                  action={editStory} 
+                  destination={'ShowStory'}
+                  {...props}/>
+                <Link 
+                  text={'EDIT'} 
+                  data={story} 
+                  action={editStory} 
+                  destination={'CreateStory'}
+                  {...props}/>
+                <Link 
+                  text={'REMOVE'} 
+                  data={story._key} 
+                  action={removeStory} 
+                  {...props}/>
+              </View> 
+          
+            </View>
+          )}
+        </View>
       </View>
     )
   }
