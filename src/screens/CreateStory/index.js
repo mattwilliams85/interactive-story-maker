@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import { reduxForm, Field } from 'redux-form'
 import { Text, View, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
-import { styles } from './styles'
-import FormInput from '../../components/FormInput'
+import { globalStyles } from '../../styles/global'
+import { FormInput, Button } from '../../components'
 
 class CreateStory extends Component {
   constructor(props) {
@@ -25,36 +25,31 @@ class CreateStory extends Component {
     const { handleSubmit, initialValues } = this.props
     const { navigate } = this.props.navigation
     const { submit } = this
+    const buttonText = initialValues ? 'Update' : 'Submit'
     
     return (
-      <View style={styles.container}>
+      <View style={globalStyles.container}>
+        <View style={globalStyles.section}>
+          <Text>Title</Text>
+          <Field
+            name='title' 
+            placeholder={'Story Title'}
+            component={FormInput} />
 
-        <Text>Title</Text>
-        <Field
-          name='title' 
-          placeholder={'Story Title'}
-          width={300}
-          component={FormInput} />
+          <Text>Introduction</Text>
+          <Field 
+            name='introduction'
+            multiline={true}
+            numberOfLines={4}
+            height={'50%'}
+            placeholder={'Once upon a time...'}
+            component={FormInput} />
 
-        <Text>Introduction</Text>
-        <Field 
-          name='introduction'
-          multiline={true}
-          numberOfLines={4}
-          height={'50%'}
-          width={300}
-          placeholder={'Once upon a time...'}
-          component={FormInput} />
-
-        <TouchableOpacity 
-          onPress={handleSubmit(submit)}
-          style={styles.button}>
-          { initialValues ?
-            <Text>Update</Text> :
-            <Text>Submit</Text>
-          }
-        </TouchableOpacity>
-        
+          <Button 
+            text={buttonText}
+            onPress={handleSubmit(submit)}
+            position={'bottom'}/>
+        </View>
       </View>
     )
   }

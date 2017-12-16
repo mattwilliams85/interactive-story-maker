@@ -8,8 +8,7 @@ export const styles = StyleSheet.create({
         width: 250,
         paddingLeft: 10,
         marginBottom: 10,
+        backgroundColor: '#f9f9f9',
+        width: 300,
     },
-    textArea: {
-        height: 200,
-    }
 })
