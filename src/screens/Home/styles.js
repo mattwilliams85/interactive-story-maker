@@ -7,7 +7,6 @@ export const styles = StyleSheet.create({
     paddingTop: 50,
   },
   title: {
-    // marginBottom: 5,
     fontSize: 20,
     textAlign: 'center',
   },
@@ -15,14 +14,6 @@ export const styles = StyleSheet.create({
     textAlign: 'center',
     width: 200,
     color: '#888',
-  },
-  button: {
-    alignItems: 'center',
-    padding: 5,
-    width: 300,
-    marginBottom: 30,
-    borderRadius: 4,
-    borderWidth: 3,
   },
   card: {
     backgroundColor: '#fff',
@@ -34,10 +25,6 @@ export const styles = StyleSheet.create({
     shadowOpacity: 0.5,
     shadowRadius: 2,
     elevation: 1,
-  },
-  option: {
-    color: 'blue',
-    textAlign: 'center'
   },
   options: {
     flexDirection: 'row',
