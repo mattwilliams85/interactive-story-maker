@@ -14,5 +14,9 @@ export const globalStyles = StyleSheet.create({
   },
   h1: {
     fontSize: 26,
-  }
+  },
+  p: {
+    marginTop: 5,
+    marginBottom: 5,
+  },
 })

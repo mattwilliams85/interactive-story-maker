@@ -1,5 +1,5 @@
 import { StackNavigator } from 'react-navigation'
-import { CreateStory, Home, ShowStory } from '../screens'
+import { CreateStory, Home, ShowStory, Scene } from '../screens'
 
 export const Navigation = StackNavigator({
   Home: {
@@ -18,6 +18,12 @@ export const Navigation = StackNavigator({
     screen: ShowStory,
     navigationOptions: {
       title: 'Edit Story',
+    }
+  },
+  Scene: {
+    screen: Scene,
+    navigationOptions: {
+      title: 'Scene',
     }
   }
 })

@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { ActionCreators } from '../actions'
-import { Navigation } from '../config/router'
+import { ActionCreators } from '../../actions'
+import { Navigation } from '../../config/router'
 
 class AppContainer extends Component {
   render() {

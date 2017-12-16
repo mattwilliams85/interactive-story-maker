@@ -45,12 +45,12 @@ class Home extends Component {
           {stories.map((story, i) =>
             <View key={i} style={styles.card}>
               <Text style={styles.title}>{story.title}</Text>
-              <Text 
+              {/* <Text 
                 style={styles.introduction}
                 numberOfLines={1}
                 ellipsizeMode={'tail'}>
                 {story.introduction}
-              </Text>
+              </Text> */}
               <View style={styles.options}>
                 <Link 
                   text={'VIEW'} 

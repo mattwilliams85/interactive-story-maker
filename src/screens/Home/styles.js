@@ -18,7 +18,7 @@ export const styles = StyleSheet.create({
   card: {
     backgroundColor: '#fff',
     paddingTop: 20, paddingBottom: 20,
-    paddingLeft: 50, paddingRight: 50,
+    paddingLeft: 20, paddingRight: 20,
     marginBottom: 15,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
