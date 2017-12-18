@@ -21,13 +21,13 @@ export const styles = StyleSheet.create({
     overflow: 'hidden',
   },
   top: {
-    marginBottom: 30,
+    marginBottom: 25,
   },
   bottom: {
-    marginTop: 30,
+    marginTop: 25,
   },
   middle: {
-    marginTop: 30,
-    marginBottom: 30,
+    marginTop: 25,
+    marginBottom: 25,
   }
 })

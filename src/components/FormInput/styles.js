@@ -7,7 +7,6 @@ export const styles = StyleSheet.create({
         height: 37,
         width: 250,
         paddingLeft: 10,
-        marginBottom: 10,
         backgroundColor: '#f9f9f9',
         width: 300,
     },

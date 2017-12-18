@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { TouchableHighlight, Text } from 'react-native'
 import { styles } from './styles'
+import { Feather } from '@expo/vector-icons';
 
 export default class Link extends Component {
   constructor(props) {
@@ -19,11 +20,11 @@ export default class Link extends Component {
 
   render() {
     const { handleTouch } = this
-    const { text } = this.props
+    const { icon } = this.props
 
     return (
-      <TouchableHighlight onPress={handleTouch}>
-        <Text style={styles.link}>{text}</Text>
+      <TouchableHighlight onPress={handleTouch} underlayColor={'#fff'}>
+        <Feather name={`${icon}`} size={22} color={'#0dc0c9'}/>
       </TouchableHighlight>
     )
   }

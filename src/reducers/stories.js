@@ -6,6 +6,14 @@ const initialState = {
 }
 
 export function stories(state = initialState, action) {
+  function getActiveStory(data) {
+    if (state.activeStory) {
+      const key = state.activeStory._key
+
+      if (key) return data[key]
+    }
+  }
+
   switch (action.type) {
     case type.CREATE_STORY:
     case type.UPDATE_STORY:
@@ -20,7 +28,9 @@ export function stories(state = initialState, action) {
       }
     case type.RECEIVE_STORIES:
       return {
+        ...state,
         entities: action.payload,
+        activeStory: getActiveStory(action.payload),
         isLoading: false,
       }
     case type.EDIT_STORY:

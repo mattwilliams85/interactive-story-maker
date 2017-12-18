@@ -3,7 +3,7 @@ import { reduxForm, Field } from 'redux-form'
 import { Text, View, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
 import { globalStyles } from '../../styles/global'
-import { FormInput, Button } from '../../components'
+import { FormInput, Button, BrSm } from '../../components'
 
 class CreateStory extends Component {
   constructor(props) {
@@ -35,6 +35,8 @@ class CreateStory extends Component {
             name='title' 
             placeholder={'Story Title'}
             component={FormInput} />
+          
+          <BrSm/>
 
           <Text>Introduction</Text>
           <Field 

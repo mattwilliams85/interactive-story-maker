@@ -22,7 +22,7 @@ export const storiesCtrl = {
     firebaseDB.ref(path).on('value', (result) => {
       dispatch({
         type: type,
-        payload: objectToArray(result.val())
+        payload: result.val()
       })
     })
   },

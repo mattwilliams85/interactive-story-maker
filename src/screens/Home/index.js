@@ -4,6 +4,7 @@ import { Text, View, TouchableHighlight } from 'react-native'
 import { Spinner, Button, Link } from '../../components'
 import { globalStyles } from '../../styles/global'
 import { styles } from './styles'
+import { objectToArray } from '../../util'
 
 class Home extends Component {
   constructor(props) {
@@ -30,7 +31,7 @@ class Home extends Component {
     const { props, handleTouch } = this
     const { screenProps } = props
     const { editStory, removeStory } = props.screenProps
-    const stories = props.stories.entities
+    const stories = objectToArray(props.stories.entities)
 
     return (
       <View style={globalStyles.container}>
@@ -43,29 +44,23 @@ class Home extends Component {
           <Spinner/>
 
           {stories.map((story, i) =>
-            <View key={i} style={styles.card}>
+            <View key={i} style={globalStyles.card}>
               <Text style={styles.title}>{story.title}</Text>
-              {/* <Text 
-                style={styles.introduction}
-                numberOfLines={1}
-                ellipsizeMode={'tail'}>
-                {story.introduction}
-              </Text> */}
               <View style={styles.options}>
                 <Link 
-                  text={'VIEW'} 
+                  icon={'eye'} 
                   data={story} 
                   action={editStory} 
                   destination={'ShowStory'}
                   {...props}/>
                 <Link 
-                  text={'EDIT'} 
+                  icon={'edit'} 
                   data={story} 
                   action={editStory} 
                   destination={'CreateStory'}
                   {...props}/>
                 <Link 
-                  text={'REMOVE'} 
+                  icon={'trash'} 
                   data={story._key} 
                   action={removeStory} 
                   {...props}/>
