@@ -3,16 +3,37 @@ import { reduxForm, Field } from 'redux-form'
 import { Text, View, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
 import { globalStyles } from '../../styles/global'
-import { FormInput, Button } from '../../components'
+import { FormInput, Button, BrSm } from '../../components'
 
 class CreateStory extends Component {
+  constructor(props) {
+    super(props)
+
+    this.getScene = this.getScene.bind(this)
+  }
+  
+  getScene() {
+    const { params } = this.props.navigation.state
+    if (params) {
+      const { sceneKey } = this.props.navigation.state.params
+      return this.props.activeStory.scenes[sceneKey]
+    } else {
+      return {}
+    }
+  }
+
   render() {
-    const { handleSubmit } = this.props
-    const { submit } = this
+    const { submit, props, getScene } = this
+    const { handleSubmit } = props
+    const scene = getScene()
 
     return (
       <View style={globalStyles.container}>
         <View style={globalStyles.section}>
+          <Text style={globalStyles.h1}>{scene.title}</Text>
+
+          <BrSm/>
+
           <Text>Passage</Text>
           <Field
             name='passage'
@@ -37,7 +58,7 @@ CreateStory = reduxForm({
 
 CreateStory = connect(
   state => ({
-    initialValues: state.stories.activeStory,
+    activeStory: state.stories.activeStory,
   }),
 )(CreateStory)
 

@@ -8,16 +8,10 @@ import { objectToArray } from '../../util'
 import { Link } from '../../components'
 
 class SceneList extends Component {
-  constructor(props) {
-    super(props)
-
-    this.handleTouch = this.handleTouch.bind(this)
-  }
-
-  handleTouch() {
+  handleTouch(key) {
     const { navigate } = this.props.navigation
 
-    navigate('Scene')
+    navigate('Scene', {sceneKey: key})
   }
 
   getFirstPassage(scene) {
@@ -29,7 +23,7 @@ class SceneList extends Component {
   }
 
   render() {
-    const { props, getFirstPassage } = this
+    const { props, getFirstPassage, handleTouch } = this
     const { activeStory } = props
     const scenes = objectToArray(activeStory.scenes)
 
@@ -39,10 +33,18 @@ class SceneList extends Component {
           data={scenes}
           keyExtractor={(item, index) => index}
           renderItem={({ item, index }) => 
-            <View style={ index ? styles.row : [styles.row, styles.firstRow]}>
-              <Text style={globalStyles.h2}>{item.title}</Text>
-              <Feather name={`chevron-right`} size={22} color={'#ccc'} />
-            </View>
+            <TouchableHighlight 
+              style={index ? styles.row : [styles.row, styles.firstRow]}
+              onPress={handleTouch.bind(this, item._key)}>
+              <View style={styles.flexRow}>
+                <View style={styles.leftText}>
+                  <Text style={globalStyles.h2}>{item.title}</Text>
+                  <Text style={globalStyles.subtext}>{getFirstPassage(item)}</Text>
+                </View>
+
+                <Feather name={`chevron-right`} size={22} color={'#ccc'} />
+              </View>
+            </TouchableHighlight>
           }         
         />
       </View>

@@ -3,10 +3,10 @@ import { StyleSheet } from 'react-native'
 export const styles = StyleSheet.create({
   row: {
     backgroundColor: '#fff',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    flex: 1,
-    padding: 3,
+    paddingLeft: 3,
+    paddingRight: 3,
+    paddingTop: 7,
+    paddingBottom: 7,
     borderLeftWidth: 1,
     borderRightWidth: 1,
     borderTopWidth: 0,
@@ -15,5 +15,15 @@ export const styles = StyleSheet.create({
   },
   firstRow: {
     borderTopWidth: 1,
+  },
+  rowWrap: {
+    flex: 1,
+    paddingBottom: 20,
+  },
+  flexRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    flex: 1,
   }
 })

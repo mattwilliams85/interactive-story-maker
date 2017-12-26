@@ -47,7 +47,7 @@ class ShowStory extends Component {
             onPress={handleSubmit(submit)}
             position={'top'}/>
 
-            <SceneList scenes={scenes}/>
+            <SceneList scenes={scenes} {...props}/>
         </View>
       </View>
     )

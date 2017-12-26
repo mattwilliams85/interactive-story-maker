@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native'
 export const globalStyles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    paddingTop: 50,
+    paddingTop: 30,
   },
   section: {
     maxWidth: 300,
@@ -21,6 +21,9 @@ export const globalStyles = StyleSheet.create({
   p: {
     marginTop: 5,
     marginBottom: 5,
+  },
+  subtext: {
+    color: '#ccc',
   },
   card: {
     backgroundColor: '#fff',
