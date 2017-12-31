@@ -1,11 +1,15 @@
 import { StackNavigator } from 'react-navigation'
-import { CreateStory, Home, ShowStory, Scene } from '../screens'
+import { CreateStory, Home, Story, Scene } from '../screens'
 
 export const Navigation = StackNavigator({
   Home: {
     screen: Home,
     navigationOptions: {
-      title: 'Home',
+      title: 'My Stories',
+      headerStyle: {
+        backgroundColor: '#0b3b4d',
+      },
+      headerTintColor: '#fff',
     }
   },
   CreateStory: {
@@ -14,8 +18,8 @@ export const Navigation = StackNavigator({
       title: 'New Story',
     }
   },
-  ShowStory: {
-    screen: ShowStory,
+  Story: {
+    screen: Story,
     navigationOptions: {
       title: 'Edit Story',
     }
@@ -27,5 +31,6 @@ export const Navigation = StackNavigator({
     }
   }
 })
+
 
 

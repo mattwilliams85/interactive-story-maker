@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Provider, connect } from 'react-redux'
-import { AppRegistry } from 'react-native'
+import { AppRegistry, StatusBar } from 'react-native'
 import { createStore, applyMiddleware, compose } from 'redux'
 import thunkMiddleware from 'redux-thunk'
 import { createLogger } from 'redux-logger'

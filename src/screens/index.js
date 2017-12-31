@@ -1,6 +1,6 @@
 import CreateStory from './CreateStory'
 import Home from './Home'
-import ShowStory from './ShowStory'
+import Story from './Story'
 import Scene from './Scene'
 
-export { CreateStory, Home, ShowStory, Scene }
+export { CreateStory, Home, Story, Scene }

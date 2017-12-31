@@ -5,7 +5,7 @@ import { Text, View, TouchableHighlight } from 'react-native'
 import { Button, FormInput, BrLg, BrSm, SceneList } from '../../components/'
 import { globalStyles } from '../../styles/global'
 
-class ShowStory extends Component {
+class Story extends Component {
   constructor(props) {
     super(props)
 
@@ -54,16 +54,16 @@ class ShowStory extends Component {
   }
 }
 
-ShowStory = reduxForm({
+Story = reduxForm({
   form: 'CreateScene',
   enableReinitialize: true,
-})(ShowStory)
+})(Story)
 
-ShowStory = connect(
+Story = connect(
   state => ({
     activeStory: state.stories.activeStory
   }),
-)(ShowStory)
+)(Story)
 
-export default ShowStory
+export default Story
 

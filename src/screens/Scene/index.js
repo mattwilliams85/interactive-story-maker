@@ -10,6 +10,7 @@ class CreateStory extends Component {
     super(props)
 
     this.getScene = this.getScene.bind(this)
+    this.submit = this.submit.bind(this)
   }
   
   getScene() {
@@ -20,6 +21,17 @@ class CreateStory extends Component {
     } else {
       return {}
     }
+  }
+
+  submit(data) {
+    const { createPassage } = this.props.screenProps
+    const storyId = this.props.activeStory._key
+    const sceneId = this.props.navigation.state.params.sceneKey
+    console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+    console.log('data',data)
+    console.log('story', storyId)
+    console.log('scene', sceneId)
+    createPassage(data, storyId, sceneId)
   }
 
   render() {
@@ -43,8 +55,9 @@ class CreateStory extends Component {
             height={'50%'}
             component={FormInput} />
           <Button
-            text={'Add Choice'}
-            position={'bottom'} />
+            text={'Add Passage'}
+            position={'bottom'}
+            onPress={handleSubmit(submit)}/>
         </View>
       </View>
     )

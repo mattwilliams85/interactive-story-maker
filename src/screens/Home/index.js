@@ -51,7 +51,7 @@ class Home extends Component {
                   icon={'eye'} 
                   data={story} 
                   action={editStory} 
-                  destination={'ShowStory'}
+                  destination={'Story'}
                   {...props}/>
                 <Link 
                   icon={'edit'} 

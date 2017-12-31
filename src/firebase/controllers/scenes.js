@@ -2,12 +2,12 @@ import { firebaseDB } from '../';
 import { objectToArray } from '../../util'
 
 const userId = 1
-const path = `users/${userId}/games/`
+const path = `users/${userId}/games`
 
 export const scenesCtrl = {
   create(data, storyId) {
     const newScene = { title: data.title }
-    console.log('STORY', storyId)
+
     return firebaseDB.ref(`${path}/${storyId}/scenes`).push(newScene)
   },
 
