@@ -42,6 +42,12 @@ export function stories(state = initialState, action) {
       return {
         ...state,
         activeStory: null,
+        activeImg: null,
+      }
+    case type.UPLOAD_IMG:
+      return {
+        ...state,
+        activeImg: action.data,
       }
     default:
       return state

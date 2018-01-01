@@ -6,6 +6,7 @@ import Link from './Link'
 import BrSm from './BrSm'
 import BrLg from './BrLg'
 import SceneList from './SceneList'
+import ImgUploader from './ImgUploader'
 
 export { Button, FormInput, Spinner, AppContainer, Link,
-  BrSm, BrLg, SceneList }
+  BrSm, BrLg, SceneList, ImgUploader }

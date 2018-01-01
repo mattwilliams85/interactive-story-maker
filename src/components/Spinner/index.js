@@ -12,7 +12,7 @@ class Spinner extends Component {
         <ActivityIndicator 
           animating={isLoading} 
           size="large" 
-          color="#0000ff" />
+          color="#0dc0c9" />
       </View> : null
     )
   }

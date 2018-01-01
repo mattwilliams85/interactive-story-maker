@@ -36,4 +36,9 @@ export const updateStory = (data) => (dispatch) => {
   })
 }
 
-
+export const uploadImg = (data) => (dispatch) => {
+  dispatch({
+    type: type.UPLOAD_IMG,
+    data
+  })
+}
