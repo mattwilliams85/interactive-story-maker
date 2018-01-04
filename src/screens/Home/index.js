@@ -38,17 +38,19 @@ class Home extends Component {
 
     return (
       <View style={globalStyles.container}>
-        <Button 
-          text={'Write a New Story'} 
-          onPress={handleTouch}
-          position={'top'} />
+        <View style={globalStyles.section}>
+          <Button 
+            text={'Write a New Story'} 
+            onPress={handleTouch}
+            position={'top'} />
 
-        <Spinner/>
+          <Spinner/>
 
-        <View style={styles.coverWrap}>
-          {stories.map((story, i) =>
-            <Book {...props} story={story} key={i}/>
-          )}
+          <View style={styles.coverWrap}>
+            {stories.map((story, i) =>
+              <Book {...props} story={story} key={i}/>
+            )}
+          </View>
         </View>
       </View>
     )

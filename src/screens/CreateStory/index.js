@@ -26,8 +26,8 @@ class CreateStory extends Component {
   }
 
   submit(data) {
-    const { initialValues, dispatch, coverImg } = this.props
-    const { navigate } = this.props.navigation
+    const { initialValues, coverImg } = this.props
+    const { navigate, dispatch } = this.props.navigation
     const { createStory, updateStory, clearStory } = this.props.screenProps
     const backAction = NavigationActions.back()
     let image = null
@@ -54,7 +54,7 @@ class CreateStory extends Component {
 
         this.toggleIsLoading()
         initialValues ? updateStory(data) : createStory(data)
-        this.props.navigation.dispatch(backAction)
+        dispatch(backAction)
 
 
       }

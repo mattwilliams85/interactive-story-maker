@@ -3,6 +3,7 @@ import { TouchableHighlight, Text } from 'react-native'
 import { styles } from './styles'
 import { Feather } from '@expo/vector-icons';
 
+// TODO: DELETE?
 export default class Link extends Component {
   constructor(props) {
     super(props)

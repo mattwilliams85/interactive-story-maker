@@ -3,13 +3,12 @@ import { StyleSheet } from 'react-native'
 export const globalStyles = StyleSheet.create({
   container: {
     paddingTop: 20,
-    paddingLeft: 20,
-    paddingRight: 20,
     flex: 1,
     backgroundColor: '#f5f5f5'
   },
   section: {
-    maxWidth: 300,
+    paddingLeft: 20,
+    paddingRight: 20,
   },
   center: {
     alignItems: 'center',
@@ -25,6 +24,7 @@ export const globalStyles = StyleSheet.create({
   p: {
     marginTop: 5,
     marginBottom: 5,
+    paddingBottom: 30,
     fontSize: 13,
     lineHeight: 18,
     color: '#333',

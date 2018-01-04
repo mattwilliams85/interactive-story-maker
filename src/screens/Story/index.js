@@ -34,60 +34,62 @@ class Story extends Component {
     const { handleSubmit, activeStory } = props
     const { title, author, introduction, scenes, coverImg } = activeStory
 
-    return (
-      <ScrollView contentContainerStyle={[globalStyles.container, styles.textContainer]}>
-        <View style={styles.textWrap}>
-          <View style={[globalStyles.boxShadow, styles.imgWrap]}>
-            <Image
-              style={styles.img}
-              source={{ uri: coverImg.uri }}
-            />
-          </View>
-
-          <Br/>
-          <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <View style={{width: '48%'}}>
-              <Button text={'Play'} />
+    return (  
+      <View style={globalStyles.container}>
+        <ScrollView contentContainerStyle={[globalStyles.section, globalStyles.center]}>
+          <View style={styles.textWrap}>
+            <View style={[globalStyles.boxShadow, styles.imgWrap]}>
+              <Image
+                style={styles.img}
+                source={{ uri: coverImg.uri }}
+              />
             </View>
-            <View style={{ width: '48%'}}>
-              <Button 
-                text={'Edit'}
-                onPress={handleTouch}/>
-            </View>
-          </View>
-         
-          <Br size={40}/>
 
-          <View style={globalStyles.center}>
-            <Text style={globalStyles.h1}>
-              {title}
-            </Text>
-            <Text style={globalStyles.subtext}>
-              {author}
-            </Text>
-          </View>
+            <Br/>
+            <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+              <View style={{width: '48%'}}>
+                <Button text={'Play'} />
+              </View>
+              <View style={{ width: '48%'}}>
+                <Button 
+                  text={'Edit'}
+                  onPress={handleTouch}/>
+              </View>
+            </View>
           
-          <Br size={10}/>
-          {/* <Br size={20}/> */}
+            <Br size={40}/>
 
-          {/* <Field
-            name='title'
-            placeholder={'Scene Title'}
-            component={FormInput} />
-          <Br/>
-          <Button 
-            text={'Start a New Scene'} 
-            onPress={handleSubmit(submit)}
-            position={'top'}/> */}
-      
-          {/* <SceneList scenes={scenes} {...props}/> */}
-        </View>
+            <View style={globalStyles.center}>
+              <Text style={globalStyles.h1}>
+                {title}
+              </Text>
+              <Text style={globalStyles.subtext}>
+                {author}
+              </Text>
+            </View>
+            
+            <Br size={10}/>
+            {/* <Br size={20}/> */}
 
-        <Text style={globalStyles.p}>
-          {introduction}
-        </Text>
+            {/* <Field
+              name='title'
+              placeholder={'Scene Title'}
+              component={FormInput} />
+            <Br/>
+            <Button 
+              text={'Start a New Scene'} 
+              onPress={handleSubmit(submit)}
+              position={'top'}/> */}
+        
+            {/* <SceneList scenes={scenes} {...props}/> */}
+          </View>
 
-      </ScrollView>
+          <Text style={globalStyles.p}>
+            {introduction}
+          </Text>
+
+        </ScrollView>
+      </View>
     )
   }
 }
