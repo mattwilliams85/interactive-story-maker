@@ -20,17 +20,19 @@ class ImgUploader extends Component {
 
   render() {
     const { handleTouch } = this
-    const { coverImg } = this.props
+    const { activeImg, activeStory } = this.props
+    let image = null
+    if (activeStory) image = activeStory.coverImg
+    if (activeImg) image = activeImg
 
     return (
       <View>
-          <TouchableOpacity onPress={handleTouch}>
-            {coverImg ? <Image source={{ uri: coverImg.uri }} style={styles.coverImg} /> : 
-            <View style={styles.button}>
-              <Feather name={'plus'} size={40} color={'#0dc0c9'} />
-            </View>}
-          </TouchableOpacity>
-        
+        <TouchableOpacity onPress={handleTouch}>
+          {image ? <Image source={{ uri: image.uri }} style={styles.coverImg} /> : 
+          <View style={styles.button}>
+            <Feather name={'plus'} size={40} color={'#0dc0c9'} />
+          </View>}
+        </TouchableOpacity>
       </View>
     )
   }
@@ -39,7 +41,8 @@ class ImgUploader extends Component {
 
 function mapStateToProps(state) {
   return {
-    coverImg: state.stories.activeImg,
+    activeImg: state.stories.activeImg,
+    activeStory: state.stories.activeStory
   }
 }
 

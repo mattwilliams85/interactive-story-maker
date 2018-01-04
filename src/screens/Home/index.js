@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Text, View, TouchableHighlight } from 'react-native'
-import { Spinner, Button, Link } from '../../components'
+import { View } from 'react-native'
+import { Spinner, Button, Book } from '../../components'
 import { globalStyles } from '../../styles/global'
 import { styles } from './styles'
 import { objectToArray } from '../../util'
@@ -9,6 +9,8 @@ import { objectToArray } from '../../util'
 class Home extends Component {
   constructor(props) {
     super(props)
+    
+    this.state = { dimension: 0 }
 
     this.handleTouch = this.handleTouch.bind(this)
   }
@@ -23,50 +25,29 @@ class Home extends Component {
     const { clearStory } = this.props.screenProps
     const { navigate } = this.props.navigation
     
-    navigate('CreateStory')
     clearStory()
+    navigate('CreateStory')
   }
 
   render() {
-    const { props, handleTouch } = this
+    const { props, handleTouch, state } = this
+    const { dimension } = state
     const { screenProps } = props
     const { editStory, removeStory } = props.screenProps
     const stories = objectToArray(props.stories.entities)
 
     return (
       <View style={globalStyles.container}>
-        <View style={globalStyles.section}>
-          <Button 
-            text={'New Story'} 
-            onPress={handleTouch}
-            position={'top'} />
+        <Button 
+          text={'Write a New Story'} 
+          onPress={handleTouch}
+          position={'top'} />
 
-          <Spinner/>
+        <Spinner/>
 
+        <View style={styles.coverWrap}>
           {stories.map((story, i) =>
-            <View key={i} style={globalStyles.card}>
-              <Text style={styles.title}>{story.title}</Text>
-              <View style={styles.options}>
-                <Link 
-                  icon={'eye'} 
-                  data={story} 
-                  action={editStory} 
-                  destination={'Story'}
-                  {...props}/>
-                <Link 
-                  icon={'edit'} 
-                  data={story} 
-                  action={editStory} 
-                  destination={'CreateStory'}
-                  {...props}/>
-                <Link 
-                  icon={'trash'} 
-                  data={story._key} 
-                  action={removeStory} 
-                  {...props}/>
-              </View> 
-          
-            </View>
+            <Book {...props} story={story} key={i}/>
           )}
         </View>
       </View>

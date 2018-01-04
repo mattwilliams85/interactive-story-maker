@@ -1,24 +1,25 @@
 import { StyleSheet } from 'react-native'
 
 export const styles = StyleSheet.create({
-  buttonWrap: {
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.5,
-    shadowRadius: 2,
-    borderRadius: 3,
-    elevation: 1,
-    shadowColor: '#000',
-  },
   button: {
+    paddingLeft: 8,
+    paddingRight: 8,
+    paddingTop: 6,
+    paddingBottom: 6,
+    borderRadius: 5,
+    borderWidth: 1,
+    borderColor: '#446377',
     alignItems: 'center',
-    padding: 8,
-    width: 300,
-    borderRadius: 3,
-    textAlign: 'center',
-    color: '#fff',
-    backgroundColor: '#0dc0c9',
+  },
+  buttonPress: {
+    backgroundColor: '#446377',
+  },
+  text: {
+    color: '#446377',
     fontWeight: 'bold',
-    overflow: 'hidden',
+  },
+  textPress: {
+    color: '#fff',
   },
   top: {
     marginBottom: 25,

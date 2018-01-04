@@ -2,8 +2,11 @@ import { StyleSheet } from 'react-native'
 
 export const globalStyles = StyleSheet.create({
   container: {
-    alignItems: 'center',
-    paddingTop: 30,
+    paddingTop: 20,
+    paddingLeft: 20,
+    paddingRight: 20,
+    flex: 1,
+    backgroundColor: '#f5f5f5'
   },
   section: {
     maxWidth: 300,
@@ -12,7 +15,8 @@ export const globalStyles = StyleSheet.create({
     alignItems: 'center',
   },
   h1: {
-    fontSize: 26,
+    fontSize: 22,
+    fontWeight: 'bold',
     textAlign: 'center',
   },
   h2: {
@@ -21,18 +25,18 @@ export const globalStyles = StyleSheet.create({
   p: {
     marginTop: 5,
     marginBottom: 5,
+    fontSize: 13,
+    lineHeight: 18,
+    color: '#333',
   },
   subtext: {
-    color: '#ccc',
+    color: '#888',
+    lineHeight: 25,
   },
-  card: {
-    backgroundColor: '#fff',
-    paddingTop: 15, paddingBottom: 15,
-    paddingLeft: 15, paddingRight: 15,
-    marginBottom: 15,
+  boxShadow: {
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.5,
+    shadowOffset: { width: 0, height: 0 },
+    shadowOpacity: 0.4,
     shadowRadius: 2,
     elevation: 1,
   },

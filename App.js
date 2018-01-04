@@ -13,7 +13,7 @@ function configureStore(initialState) {
   const enhancer = compose(
     applyMiddleware(
       thunkMiddleware,
-      logger,
+      // logger,
     )
   )
   return createStore(reducer, initialState, enhancer)

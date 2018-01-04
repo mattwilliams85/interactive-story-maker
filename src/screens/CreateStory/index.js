@@ -1,32 +1,72 @@
 import React, { Component } from 'react'
-import { reduxForm, Field, change } from 'redux-form'
+import { reduxForm, Field } from 'redux-form'
 import { Text, View, TouchableOpacity, ImageStore } from 'react-native'
 import { connect } from 'react-redux'
+import { RNS3 } from 'react-native-aws3'
 import { globalStyles } from '../../styles/global'
-import { FormInput, Button, BrSm, ImgUploader } from '../../components'
+import { FormInput, Button, Br, ImgUploader } from '../../components'
+import { s3options } from '../../config/s3Settings'
+import { NavigationActions } from 'react-navigation'
 
 class CreateStory extends Component {
   constructor(props) {
     super(props)
 
+    this.state = {
+      isLoading: false
+    }
+
     this.submit = this.submit.bind(this)
+  }
+
+  toggleIsLoading() {
+    this.setState({
+      isLoading: !this.state.isLoading
+    })
   }
 
   submit(data) {
     const { initialValues, dispatch, coverImg } = this.props
     const { navigate } = this.props.navigation
-    const { createStory, updateStory } = this.props.screenProps
-  
-    dispatch(change('CreateStory', 'coverImg', coverImg))
-    initialValues ? updateStory(data) : createStory(data)
+    const { createStory, updateStory, clearStory } = this.props.screenProps
+    const backAction = NavigationActions.back()
+    let image = null
+    if (initialValues.coverImg) image = initialValues.coverImg
+    if (coverImg) image = coverImg
     
-    navigate('Home')
+    // TODO: Refactor into separate async function
+    const file = {
+      uri: image.uri,
+      name: image.filename,
+      type: "image/png"
+    }
+
+    this.toggleIsLoading()  
+
+    RNS3.put(file, s3options).then(response => {
+      if (response.status !== 201) {
+        throw new Error("Failed to upload image to S3");
+      } else {
+        data.coverImg = { 
+          uri: response.body.postResponse.location ,
+          filename: file.name
+        }
+
+        this.toggleIsLoading()
+        initialValues ? updateStory(data) : createStory(data)
+        this.props.navigation.dispatch(backAction)
+
+
+      }
+    })
   }
 
   render() {
     const { handleSubmit, initialValues, navigation, screenProps } = this.props
     const { submit } = this
+    const { isLoading } = this.state
     const buttonText = initialValues ? 'Update' : 'Submit'
+
     return (
       <View style={globalStyles.container}>
         <View style={globalStyles.section}>
@@ -35,21 +75,21 @@ class CreateStory extends Component {
             name='title' 
             placeholder={'Story Title'}
             component={FormInput} />
-          <BrSm/>
+          <Br/>
 
           <Text>Author</Text>
           <Field
             name='author'
             placeholder={'Author'}
             component={FormInput} />
-          <BrSm />
+          <Br />
 
           <Text>Cover Image</Text>
           <Field
             name='coverImg'
             component={ImgUploader} 
             props={{ navigation, screenProps}} />
-          <BrSm />
+          <Br />
 
           <Text>Introduction</Text>
           <Field 
@@ -63,7 +103,8 @@ class CreateStory extends Component {
           <Button 
             text={buttonText}
             onPress={handleSubmit(submit)}
-            position={'bottom'}/>
+            position={'bottom'}
+            loadState={isLoading}/>
         </View>
       </View>
     )

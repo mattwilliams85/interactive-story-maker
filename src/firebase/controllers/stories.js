@@ -8,7 +8,9 @@ export const storiesCtrl = {
   create(data) {
     const newStory = {
       title: data.title,
+      author: data.author,
       introduction: data.introduction,
+      coverImg: data.coverImg,
     }
     
     return firebaseDB.ref(path).push(newStory)
@@ -30,7 +32,9 @@ export const storiesCtrl = {
   update(data) {
     const updatedStory = {
       title: data.title,
+      author: data.author,
       introduction: data.introduction,
+      coverImg: data.coverImg,
     }
 
     return firebaseDB.ref(`${path}/${data._key}`).set(updatedStory)

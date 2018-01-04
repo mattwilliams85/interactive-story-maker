@@ -1,23 +1,34 @@
 import { StyleSheet } from 'react-native'
 
+const cardWidth = 157
+
 export const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    paddingTop: 50,
+  card: { 
+    width: cardWidth 
+  },
+  coverWrap: { 
+    flexDirection: 'row', 
+    flexWrap: 'wrap', 
+    justifyContent: 'space-between'
+  },
+  cover: { 
+    height: cardWidth, 
+    width: cardWidth, 
+    marginBottom: 4 
+  },
+  img: { 
+    height: cardWidth, 
+    width: cardWidth 
   },
   title: {
-    fontSize: 20,
-    textAlign: 'center',
+    fontWeight: 'bold',
+    fontSize: 14,
+    width: cardWidth,
+    lineHeight: 20,
   },
-  introduction: {
-    textAlign: 'center',
-    width: 200,
+  author: {
+    fontSize: 12,
     color: '#888',
-  },
-  options: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    paddingTop: 10
-  },
+    lineHeight: 14,
+  }
 })

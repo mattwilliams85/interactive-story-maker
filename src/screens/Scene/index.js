@@ -3,7 +3,7 @@ import { reduxForm, Field } from 'redux-form'
 import { Text, View, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
 import { globalStyles } from '../../styles/global'
-import { FormInput, Button, BrSm } from '../../components'
+import { FormInput, Button, Br } from '../../components'
 
 class CreateStory extends Component {
   constructor(props) {
@@ -27,10 +27,7 @@ class CreateStory extends Component {
     const { createPassage } = this.props.screenProps
     const storyId = this.props.activeStory._key
     const sceneId = this.props.navigation.state.params.sceneKey
-    console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
-    console.log('data',data)
-    console.log('story', storyId)
-    console.log('scene', sceneId)
+
     createPassage(data, storyId, sceneId)
   }
 
@@ -44,7 +41,7 @@ class CreateStory extends Component {
         <View style={globalStyles.section}>
           <Text style={globalStyles.h1}>{scene.title}</Text>
 
-          <BrSm/>
+          <Br/>
 
           <Text>Passage</Text>
           <Field

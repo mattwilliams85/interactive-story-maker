@@ -1,15 +1,17 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { reduxForm, Field } from 'redux-form'
-import { Text, View, TouchableHighlight } from 'react-native'
-import { Button, FormInput, BrLg, BrSm, SceneList } from '../../components/'
+import { Text, View, ScrollView, TouchableHighlight, Image } from 'react-native'
+import { Button, FormInput, Br, SceneList } from '../../components/'
 import { globalStyles } from '../../styles/global'
+import { styles } from './styles'
 
 class Story extends Component {
   constructor(props) {
     super(props)
 
     this.submit = this.submit.bind(this)
+    this.handleTouch = this.handleTouch.bind(this)
   }
 
   submit(data) {
@@ -21,35 +23,71 @@ class Story extends Component {
     navigate('Scene')
   }
 
+  handleTouch() {
+    const { navigate } = this.props.navigation
+
+    navigate('CreateStory')
+  }
+
   render() {
     const { handleTouch, submit, props } = this
     const { handleSubmit, activeStory } = props
-    const { title, introduction, scenes } = activeStory
+    const { title, author, introduction, scenes, coverImg } = activeStory
 
     return (
-      <View style={globalStyles.container}>
-        <View style={globalStyles.section}>
+      <ScrollView contentContainerStyle={[globalStyles.container, styles.textContainer]}>
+        <View style={styles.textWrap}>
+          <View style={[globalStyles.boxShadow, styles.imgWrap]}>
+            <Image
+              style={styles.img}
+              source={{ uri: coverImg.uri }}
+            />
+          </View>
+
+          <Br/>
+          <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <View style={{width: '48%'}}>
+              <Button text={'Play'} />
+            </View>
+            <View style={{ width: '48%'}}>
+              <Button 
+                text={'Edit'}
+                onPress={handleTouch}/>
+            </View>
+          </View>
+         
+          <Br size={40}/>
 
           <View style={globalStyles.center}>
-            <Text style={globalStyles.h1}>{title}</Text>
+            <Text style={globalStyles.h1}>
+              {title}
+            </Text>
+            <Text style={globalStyles.subtext}>
+              {author}
+            </Text>
           </View>
-          <Text style={globalStyles.p}>{introduction}</Text>
+          
+          <Br size={10}/>
+          {/* <Br size={20}/> */}
 
-          <BrLg/>
-
-          <Field
+          {/* <Field
             name='title'
             placeholder={'Scene Title'}
             component={FormInput} />
-          <BrSm/>
+          <Br/>
           <Button 
             text={'Start a New Scene'} 
             onPress={handleSubmit(submit)}
-            position={'top'}/>
-
-            <SceneList scenes={scenes} {...props}/>
+            position={'top'}/> */}
+      
+          {/* <SceneList scenes={scenes} {...props}/> */}
         </View>
-      </View>
+
+        <Text style={globalStyles.p}>
+          {introduction}
+        </Text>
+
+      </ScrollView>
     )
   }
 }
