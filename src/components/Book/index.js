@@ -23,6 +23,7 @@ export default class Book extends Component {
         <View style={styles.card}>
           <View style={[styles.cover, globalStyles.boxShadow]}>
             <Image
+              cache={'force-cache'}
               style={styles.img}
               source={{ uri: story.coverImg.uri }}
             />

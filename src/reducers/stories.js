@@ -3,14 +3,19 @@ import * as type from '../actions/types'
 const initialState = {
   entities: [],
   isLoading: false,
+  activeStory: {
+    title: null,
+    author: null,
+    coverImg: {},
+    introduction: null
+  }
 }
 
 export function stories(state = initialState, action) {
   function getActiveStory(data) {
     if (state.activeStory) {
       const key = state.activeStory._key
-
-      if (key) return data[key]
+      return key && data[key] ? data[key] : initialState.activeStory
     }
   }
 
@@ -36,7 +41,8 @@ export function stories(state = initialState, action) {
     case type.EDIT_STORY:
       return {
         ...state,
-        activeStory: action.data
+        activeStory: action.data,
+        activeImg: null,
       }
     case type.CLEAR_STORY:
       return {

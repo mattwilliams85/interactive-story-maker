@@ -1,12 +1,23 @@
 import { StackNavigator } from 'react-navigation'
 import React from 'react'
+import { TouchableWithoutFeedback } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import { CreateStory, Home, Story, Scene, CameraRoll } from '../screens'
 
 const headerStyle = { backgroundColor: '#0b3b4d' }
 const headerTintColor = '#fff'
-const headerLeft = <Feather name={'settings'} size={20} color={'#fff'} style={{paddingLeft:15}} />
-const headerRight = <Feather name={'feather'} size={20} color={'#fff'} style={{paddingRight:15}}/>
+const headerLeft = 
+  <Feather 
+    name={'settings'} 
+    size={20} 
+    color={'#fff'} 
+    style={{paddingLeft:15}} />
+const headerRight = 
+  <Feather 
+    name={'feather'} 
+    size={20} 
+    color={'#fff'} 
+    style={{paddingRight:15}}/>
 
 function defaultOptions(title) {
   return { title, headerStyle, headerTintColor }

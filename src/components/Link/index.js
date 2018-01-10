@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { TouchableHighlight, Text } from 'react-native'
+import { NavigationActions } from 'react-navigation'
 import { styles } from './styles'
 import { Feather } from '@expo/vector-icons';
 
@@ -13,10 +14,11 @@ export default class Link extends Component {
 
   handleTouch() {
     const { data, destination, action } = this.props
-    const { navigate } = this.props.navigation
+    const { navigate, dispatch } = this.props.navigation
+    const backAction = NavigationActions.back()
 
     action(data)
-    navigate(destination)
+    destination === 'back' ? dispatch(backAction) : navigate(destination)
   }
 
   render() {

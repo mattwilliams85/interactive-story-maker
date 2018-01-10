@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { reduxForm, Field } from 'redux-form'
 import { Text, View, ScrollView, TouchableHighlight, Image } from 'react-native'
-import { Button, FormInput, Br, SceneList } from '../../components/'
+import { MaterialIcons } from '@expo/vector-icons';
+import { Button, FormInput, Br, SceneList, Link } from '../../components/'
 import { globalStyles } from '../../styles/global'
 import { styles } from './styles'
 
@@ -14,11 +15,29 @@ class Story extends Component {
     this.handleTouch = this.handleTouch.bind(this)
   }
 
+  static navigationOptions = ({ navigation }) => {
+    const { navigate } = navigation
+    const headerRight =
+      <TouchableHighlight>
+        <MaterialIcons
+          onPress={onPress}
+          name={'more-horiz'}
+          size={30} color={'#fff'}
+          style={{ paddingRight: 15 }} />
+      </TouchableHighlight>
+    
+    function onPress() {
+      navigate('CreateStory')
+    }
+
+    return { headerRight }
+  };
+
   submit(data) {
     const { navigate } = this.props.navigation
     const { createScene } = this.props.screenProps
     const storyId = this.props.activeStory._key
-
+    
     createScene(data, storyId)
     navigate('Scene')
   }
@@ -32,6 +51,7 @@ class Story extends Component {
   render() {
     const { handleTouch, submit, props } = this
     const { handleSubmit, activeStory } = props
+    const { updateStory, removeStory } = props.screenProps
     const { title, author, introduction, scenes, coverImg } = activeStory
 
     return (  
@@ -46,15 +66,24 @@ class Story extends Component {
             </View>
 
             <Br/>
-            <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-              <View style={{width: '48%'}}>
-                <Button text={'Play'} />
-              </View>
-              <View style={{ width: '48%'}}>
-                <Button 
-                  text={'Edit'}
-                  onPress={handleTouch}/>
-              </View>
+            <View style={{flexDirection: 'row', justifyContent: 'space-between', paddingLeft: 10, paddingRight: 10}}>
+              <Link
+                data={activeStory}
+                destination={'CreateStory'}
+                action={updateStory}
+                icon={'edit'}
+                {...props} />
+              <Link 
+                data={activeStory} 
+                destination={'PlayStory'} 
+                icon={'play'}
+                {...props} />
+              <Link
+                data={activeStory._key}
+                destination={'back'}
+                action={removeStory}
+                icon={'trash'}
+                {...props} />
             </View>
           
             <Br size={40}/>
@@ -69,19 +98,6 @@ class Story extends Component {
             </View>
             
             <Br size={10}/>
-            {/* <Br size={20}/> */}
-
-            {/* <Field
-              name='title'
-              placeholder={'Scene Title'}
-              component={FormInput} />
-            <Br/>
-            <Button 
-              text={'Start a New Scene'} 
-              onPress={handleSubmit(submit)}
-              position={'top'}/> */}
-        
-            {/* <SceneList scenes={scenes} {...props}/> */}
           </View>
 
           <Text style={globalStyles.p}>

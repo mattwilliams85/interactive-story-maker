@@ -6,6 +6,7 @@ import Book from './Book'
 import Br from './Br'
 import SceneList from './SceneList'
 import ImgUploader from './ImgUploader'
+import Link from './Link'
 
 export { Button, FormInput, Spinner, AppContainer, Book,
-  Br, SceneList, ImgUploader }
+  Br, SceneList, ImgUploader, Link }

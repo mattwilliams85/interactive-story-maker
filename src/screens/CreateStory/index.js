@@ -8,12 +8,14 @@ import { FormInput, Button, Br, ImgUploader } from '../../components'
 import { s3options } from '../../config/s3Settings'
 import { NavigationActions } from 'react-navigation'
 
+let isValid = null
+
 class CreateStory extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      isLoading: false
+      isLoading: false,
     }
 
     this.submit = this.submit.bind(this)
@@ -31,7 +33,7 @@ class CreateStory extends Component {
     const { createStory, updateStory, clearStory } = this.props.screenProps
     const backAction = NavigationActions.back()
     let image = null
-    if (initialValues.coverImg) image = initialValues.coverImg
+    if (initialValues && initialValues.coverImg) image = initialValues.coverImg
     if (coverImg) image = coverImg
     
     // TODO: Refactor into separate async function
@@ -55,8 +57,6 @@ class CreateStory extends Component {
         this.toggleIsLoading()
         initialValues ? updateStory(data) : createStory(data)
         dispatch(backAction)
-
-
       }
     })
   }
@@ -66,6 +66,7 @@ class CreateStory extends Component {
     const { submit } = this
     const { isLoading } = this.state
     const buttonText = initialValues ? 'Update' : 'Submit'
+    const isValid = value => false
 
     return (
       <View style={globalStyles.container}>
@@ -74,7 +75,8 @@ class CreateStory extends Component {
           <Field
             name='title' 
             placeholder={'Story Title'}
-            component={FormInput} />
+            component={FormInput} 
+            validate={isValid} />
           <Br/>
 
           <Text>Author</Text>
@@ -114,6 +116,22 @@ class CreateStory extends Component {
 CreateStory = reduxForm({
   form: 'CreateStory',
   enableReinitialize: true,
+  validate: (values, props) => {
+    console.log(props.initialValues)
+    if (props.initialValues) { 
+      values = props.initialValues 
+    } else {
+      values.coverImg = props.coverImg
+    }
+    const errors = {}
+
+    if (!values.title) errors.title = 'Title is required.'
+    if (!values.author) errors.author = 'Author is required.'
+    if (!values.coverImg) errors.coverImg = 'Cover Image is required.'
+    if (!values.introduction) errors.introduction = 'Introduction is required.'
+    console.log(errors)
+    return errors
+  }
 })(CreateStory)
 
 CreateStory = connect(
