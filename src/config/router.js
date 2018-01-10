@@ -2,7 +2,7 @@ import { StackNavigator } from 'react-navigation'
 import React from 'react'
 import { TouchableWithoutFeedback } from 'react-native';
 import { Feather } from '@expo/vector-icons';
-import { CreateStory, Home, Story, Scene, CameraRoll } from '../screens'
+import { CreateStory, Home, Story, Scene, CameraRoll, ListScenes } from '../screens'
 
 const headerStyle = { backgroundColor: '#0b3b4d' }
 const headerTintColor = '#fff'
@@ -12,14 +12,9 @@ const headerLeft =
     size={20} 
     color={'#fff'} 
     style={{paddingLeft:15}} />
-const headerRight = 
-  <Feather 
-    name={'feather'} 
-    size={20} 
-    color={'#fff'} 
-    style={{paddingRight:15}}/>
 
 function defaultOptions(title) {
+  if (!title) return { headerStyle, headerTintColor }
   return { title, headerStyle, headerTintColor }
 }
 
@@ -28,32 +23,30 @@ export const Navigation = StackNavigator({
     screen: Home,
     navigationOptions: {
       title: 'Library',
-      headerLeft, headerRight, headerStyle, headerTintColor
+      headerLeft, headerStyle, headerTintColor
     }
   },
   CreateStory: {
     screen: CreateStory,
-    navigationOptions: defaultOptions('New Story')
+    navigationOptions: defaultOptions()
   },
   Story: {
     screen: Story,
-    navigationOptions: defaultOptions('Edit Story')
+    navigationOptions: defaultOptions('Story')
   },
   Scene: {
     screen: Scene,
     navigationOptions: defaultOptions('Edit Scene')
+  },
+  ListScenes: {
+    screen: ListScenes,
+    navigationOptions: defaultOptions('Scenes')
   },
   CameraRoll: {
     screen: CameraRoll,
     navigationOptions: defaultOptions('Camera Roll')
   }
 })
-
-export const ModalStack = StackNavigator({
-  Test: {
-    screen: CreateStory,
-  },
-});
 
 
 

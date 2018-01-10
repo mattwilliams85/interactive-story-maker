@@ -5,9 +5,7 @@ const userId = 1
 const path = `users/${userId}/games`
 
 export const scenesCtrl = {
-  create(data, storyId) {
-    const newScene = { title: data.title }
-
+  create(storyId) {
     return firebaseDB.ref(`${path}/${storyId}/scenes`).push(newScene)
   },
 

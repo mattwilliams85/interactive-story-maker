@@ -21,6 +21,14 @@ class CreateStory extends Component {
     this.submit = this.submit.bind(this)
   }
 
+  static navigationOptions = ({ navigation, screenProps }) => {
+    const { params }  = navigation.state
+    let headerTitle = 'Story Settings'
+
+    if (params && params.headerTitle) headerTitle = 'New Story'
+    return { headerTitle }
+  }
+
   toggleIsLoading() {
     this.setState({
       isLoading: !this.state.isLoading

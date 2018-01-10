@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { reduxForm, Field } from 'redux-form'
 import { Text, View, ScrollView, TouchableHighlight, Image } from 'react-native'
 import { MaterialIcons } from '@expo/vector-icons';
-import { Button, FormInput, Br, SceneList, Link } from '../../components/'
+import { FormInput, Br, SceneList, Link } from '../../components/'
 import { globalStyles } from '../../styles/global'
 import { styles } from './styles'
 
@@ -31,7 +31,7 @@ class Story extends Component {
     }
 
     return { headerRight }
-  };
+  }
 
   submit(data) {
     const { navigate } = this.props.navigation
@@ -69,7 +69,7 @@ class Story extends Component {
             <View style={{flexDirection: 'row', justifyContent: 'space-between', paddingLeft: 10, paddingRight: 10}}>
               <Link
                 data={activeStory}
-                destination={'CreateStory'}
+                destination={'ListScenes'}
                 action={updateStory}
                 icon={'edit'}
                 {...props} />
