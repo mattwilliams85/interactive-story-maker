@@ -15,6 +15,7 @@ export function stories(state = initialState, action) {
   function getActiveStory(data) {
     if (state.activeStory) {
       const key = state.activeStory._key
+
       return key && data[key] ? data[key] : initialState.activeStory
     }
   }

@@ -125,7 +125,6 @@ CreateStory = reduxForm({
   form: 'CreateStory',
   enableReinitialize: true,
   validate: (values, props) => {
-    console.log(props.initialValues)
     if (props.initialValues) { 
       values = props.initialValues 
     } else {
@@ -137,7 +136,7 @@ CreateStory = reduxForm({
     if (!values.author) errors.author = 'Author is required.'
     if (!values.coverImg) errors.coverImg = 'Cover Image is required.'
     if (!values.introduction) errors.introduction = 'Introduction is required.'
-    console.log(errors)
+    
     return errors
   }
 })(CreateStory)

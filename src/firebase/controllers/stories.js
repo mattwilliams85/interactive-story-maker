@@ -37,6 +37,6 @@ export const storiesCtrl = {
       coverImg: data.coverImg,
     }
 
-    return firebaseDB.ref(`${path}/${data._key}`).set(updatedStory)
+    return firebaseDB.ref(`${path}/${data._key}`).update(updatedStory)
   }
 }

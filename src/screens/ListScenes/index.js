@@ -12,7 +12,7 @@ class ListScenes extends Component {
   //   this.handleTouch = this.handleTouch.bind(this)
   // }
 
-  static navigationOptions = ({ navigation }) => {
+  static navigationOptions = ({ navigation, screenProps }) => {
     const { navigate } = navigation
     const headerRight =
       <TouchableHighlight>
@@ -24,10 +24,9 @@ class ListScenes extends Component {
       </TouchableHighlight>
 
     function onPress() {
-      const { createScene } = this.props.screenProps
-      const storyId = this.props.activeStory._key
+      const { createScene } = screenProps
 
-      createScene(storyId)
+      createScene()
       navigate('Scene')
     }
 
@@ -35,12 +34,12 @@ class ListScenes extends Component {
   }
 
   render() {
-    const { handleTouch } = this
-    const { story } = this.props
+    const { handleTouch, props } = this
+    const { story } = props
 
     return (
       <View style={globalStyles.container}>
-        <SceneList />
+        <SceneList {...props} />
       </View>
     )
   }

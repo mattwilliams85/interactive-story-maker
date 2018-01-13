@@ -39,7 +39,7 @@ class CreateStory extends Component {
     return (
       <View style={globalStyles.container}>
         <View style={globalStyles.section}>
-          <Text style={globalStyles.h1}>{scene.title}</Text>
+          <Text style={globalStyles.h1}>{this.props.activeScene.title}</Text>
 
           <Br/>
 
@@ -69,6 +69,7 @@ CreateStory = reduxForm({
 CreateStory = connect(
   state => ({
     activeStory: state.stories.activeStory,
+    activeScene: state.scenes.activeScene,
   }),
 )(CreateStory)
 

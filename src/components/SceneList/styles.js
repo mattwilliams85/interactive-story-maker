@@ -3,8 +3,8 @@ import { StyleSheet } from 'react-native'
 export const styles = StyleSheet.create({
   row: {
     backgroundColor: '#fff',
-    paddingLeft: 3,
-    paddingRight: 3,
+    paddingLeft: 20,
+    paddingRight: 20,
     paddingTop: 7,
     paddingBottom: 7,
     borderLeftWidth: 1,
@@ -12,6 +12,10 @@ export const styles = StyleSheet.create({
     borderTopWidth: 0,
     borderBottomWidth: 1,
     borderColor: '#888',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    flex: 1,
   },
   firstRow: {
     borderTopWidth: 1,
@@ -20,10 +24,4 @@ export const styles = StyleSheet.create({
     flex: 1,
     paddingBottom: 20,
   },
-  flexRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    flex: 1,
-  }
 })

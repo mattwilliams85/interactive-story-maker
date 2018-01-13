@@ -1,50 +1,63 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Text, TouchableHighlight, View, FlatList } from 'react-native'
-import { Feather } from '@expo/vector-icons';
+import { Text, TouchableWithoutFeedback, View, FlatList } from 'react-native'
+import Swipeout from 'react-native-swipeout'
 import { styles } from './styles'
 import { globalStyles } from '../../styles/global'
 import { objectToArray } from '../../util'
 import { Link } from '../../components'
 
 class SceneList extends Component {
-  handleTouch(key) {
+  handleTouch(scene) {
     const { navigate } = this.props.navigation
-
-    navigate('Scene', {sceneKey: key})
+    const { selectScene } = this.props.screenProps
+    
+    selectScene(scene)
+    navigate('Scene')
   }
-
+  
   getFirstPassage(scene) {
     if (scene.passages) {
       return objectToArray(scene.passages[0])
     } else {
-      return '...'
+      return 'Once upon a time...'
     }
   }
 
   render() {
-    const { props, getFirstPassage, handleTouch } = this
+    const { props, getFirstPassage, handleTouch, handleDelete } = this
     const { activeStory } = props
     const scenes = objectToArray(activeStory.scenes)
-
+    const { removeScene } = this.props.screenProps
+    
     return (
       <View style={styles.rowWrap}>
         <FlatList
           data={scenes}
           keyExtractor={(item, index) => index}
           renderItem={({ item, index }) => 
-            <TouchableHighlight 
-              style={index ? styles.row : [styles.row, styles.firstRow]}
-              onPress={handleTouch.bind(this, item._key)}>
-              <View style={styles.flexRow}>
-                <View style={styles.leftText}>
-                  <Text style={globalStyles.h2}>{item.title}</Text>
-                  <Text style={globalStyles.subtext}>{getFirstPassage(item)}</Text>
-                </View>
+            // TODO: Find better swipe library
+            <Swipeout autoClose={true} right={[
+              {
+                text: 'Trash',
+                backgroundColor: 'red',
+               
+                onPress: () => {
+                  removeScene(item._key)
+                }
+              }
+            ]}>
+              <TouchableWithoutFeedback 
+                onPress={handleTouch.bind(this, item)}>
+                <View style={styles.row}>
+                  <View style={styles.leftText}>
+                    <Text style={globalStyles.h2}>{item.title}</Text>
+                    <Text style={globalStyles.subtext}>{getFirstPassage(item)}</Text>
+                  </View>
 
-                <Feather name={`chevron-right`} size={22} color={'#ccc'} />
-              </View>
-            </TouchableHighlight>
+                </View>
+              </TouchableWithoutFeedback>
+            </Swipeout>
           }         
         />
       </View>

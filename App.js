@@ -19,7 +19,7 @@ function configureStore(initialState) {
   return createStore(reducer, initialState, enhancer)
 }
 
-const store = configureStore({})
+export const store = configureStore({})
 
 export default class App extends Component {
   render() {
