@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native'
 export const globalStyles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f5f5f5'
+    backgroundColor: '#f2f3f4'
   },
   section: {
     paddingLeft: 20,
@@ -40,4 +40,14 @@ export const globalStyles = StyleSheet.create({
     shadowRadius: 2,
     elevation: 1,
   },
+  buttonWrap: {
+    paddingLeft: 10,
+    paddingRight: 10,
+  },
+  label: {
+    color: '#444',
+    paddingLeft: 10,
+    fontSize: 12,
+    lineHeight: 25,
+  }
 })

@@ -2,19 +2,35 @@ import { StyleSheet } from 'react-native'
 
 export const styles = StyleSheet.create({
   button: {
-    padding: 10,
-    borderWidth: 1,
-    borderStyle: 'dashed',
-    borderColor: '#0dc0c9',
-    width: 125,
-    height: 125,
-    marginTop: 5,
-    marginBottom: 5,
+    backgroundColor: '#e5e5e5',
+    borderRadius: 5,
+    width: '70%',
+    height: 200,
     alignItems: 'center',
     justifyContent: 'center',
+    alignSelf: 'center',
+    margin: 20,
+    borderWidth: 2,
+    borderColor: '#bbb'
   },
-  coverImg: {
-    height: 125,
-    width: 125,
+  imageWrap: {
+    borderRadius: 5,
+    width: '70%',
+    height: 200,
+    alignItems: 'center',
+    justifyContent: 'center',
+    alignSelf: 'center',
+    margin: 20,
+  },
+  image: {
+    borderRadius: 5,
+    width: '100%',
+    height: '100%',
+  },
+  icon: {
+    position: 'absolute',
+    top: 15,
+    left: 15,
+    backgroundColor: 'transparent'
   }
 })

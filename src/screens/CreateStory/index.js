@@ -4,7 +4,7 @@ import { Text, View, TouchableOpacity, ImageStore } from 'react-native'
 import { connect } from 'react-redux'
 import { RNS3 } from 'react-native-aws3'
 import { globalStyles } from '../../styles/global'
-import { FormInput, Button, Br, ImgUploader } from '../../components'
+import { FormInput, Button, Br, ImgUploader, FormTextArea } from '../../components'
 import { s3options } from '../../config/s3Settings'
 import { NavigationActions } from 'react-navigation'
 
@@ -77,45 +77,42 @@ class CreateStory extends Component {
     const isValid = value => false
 
     return (
-      <View style={globalStyles.container}>
-        <View style={globalStyles.section}>
-          <Text>Title</Text>
-          <Field
-            name='title' 
-            placeholder={'Story Title'}
-            component={FormInput} 
-            validate={isValid} />
-          <Br/>
-
-          <Text>Author</Text>
-          <Field
-            name='author'
-            placeholder={'Author'}
-            component={FormInput} />
-          <Br />
-
-          <Text>Cover Image</Text>
+      <View style={[globalStyles.container, globalStyles.settingsWrap]}>
           <Field
             name='coverImg'
-            component={ImgUploader} 
-            props={{ navigation, screenProps}} />
-          <Br />
+            component={ImgUploader}
+            props={{ navigation, screenProps }} />
 
-          <Text>Introduction</Text>
+          <Text style={globalStyles.label}>Title</Text>
+          <Field
+            name='title' 
+            placeholder={"Your story's name"}
+            component={FormInput} 
+            validate={isValid} />
+          <Br size={15} />
+
+          <Text style={globalStyles.label}>Author</Text>
+          <Field
+            name='author'
+            placeholder={'Who wrote it'}
+            component={FormInput} />
+          <Br size={15} />
+
+          <Text style={globalStyles.label}>Synopsis</Text>
           <Field 
             name='introduction'
-            multiline={true}
-            numberOfLines={4}
-            height={'30%'}
             placeholder={'Once upon a time...'}
-            component={FormInput} />
+            component={FormTextArea} />
+          {/* <Text style={globalStyles.label}>This is a brief introduction to your story - make it enticing!</Text> */}
+          <Br size={15} />
 
-          <Button 
-            text={buttonText}
-            onPress={handleSubmit(submit)}
-            position={'bottom'}
-            loadState={isLoading}/>
-        </View>
+          <View style={globalStyles.buttonWrap}>
+            <Button 
+              text={buttonText}
+              onPress={handleSubmit(submit)}
+              position={'bottom'}
+              loadState={isLoading}/>
+          </View>
       </View>
     )
   }

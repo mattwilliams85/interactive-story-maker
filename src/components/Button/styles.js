@@ -6,9 +6,9 @@ export const styles = StyleSheet.create({
     paddingRight: 8,
     paddingTop: 6,
     paddingBottom: 6,
-    borderRadius: 5,
-    borderWidth: 1,
-    borderColor: '#446377',
+    // borderRadius: 5,
+    // borderWidth: 1,
+    // borderColor: '#446377',
     alignItems: 'center',
   },
   buttonPress: {
@@ -17,6 +17,7 @@ export const styles = StyleSheet.create({
   text: {
     color: '#446377',
     fontWeight: 'bold',
+    fontSize: 16,
   },
   textPress: {
     color: '#fff',

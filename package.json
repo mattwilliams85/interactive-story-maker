@@ -24,6 +24,7 @@
     "firebase": "^4.8.0",
     "react": "16.0.0",
     "react-native": "0.50.3",
+    "react-native-autogrow-textinput": "^5.0.0",
     "react-native-aws3": "0.0.8",
     "react-native-camera-roll-picker": "^1.2.3",
     "react-native-swipeout": "^2.3.3",
