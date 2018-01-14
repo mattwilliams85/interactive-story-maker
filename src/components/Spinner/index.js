@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { View, ActivityIndicator } from 'react-native'
+import { styles } from './styles'
 
 class Spinner extends Component {
   render() {
@@ -8,7 +9,7 @@ class Spinner extends Component {
 
     return (
       isLoading ?
-      <View>
+      <View style={styles.spinnerWrap}>
         <ActivityIndicator 
           animating={isLoading} 
           size="large" 

@@ -4,7 +4,7 @@ import { Text, View, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
 import { globalStyles } from '../../styles/global'
 import { styles } from './styles'
-import { FormInput, Button, Br } from '../../components'
+import { FormInput, Button, Br, FormTextArea } from '../../components'
 
 class CreateStory extends Component {
   constructor(props) {
@@ -40,18 +40,14 @@ class CreateStory extends Component {
     return (
       <View style={globalStyles.container}>
         <View style={styles.section}>
-          <Br />
-          
-          <Text style={globalStyles.h1}>{this.props.activeScene.title}</Text>
-
-          <Br/>
+          <Field
+            name='title'
+            placeholder={'Scene Title'}
+            component={FormInput} />
           <Field
             name='passage'
-            placeholder={'Passage text'}
-            multiline={true}
-            numberOfLines={4}
-            height={'50%'}
-            component={FormInput} />
+            placeholder={'Once upon a time...'}
+            component={FormTextArea} />
           <Button
             text={'Add Passage'}
             position={'bottom'}
@@ -70,7 +66,7 @@ CreateStory = reduxForm({
 CreateStory = connect(
   state => ({
     activeStory: state.stories.activeStory,
-    activeScene: state.scenes.activeScene,
+    initialValues: state.scenes.activeScene,
   }),
 )(CreateStory)
 

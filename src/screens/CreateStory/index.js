@@ -19,6 +19,7 @@ class CreateStory extends Component {
     }
 
     this.submit = this.submit.bind(this)
+    this.toggleIsLoading = this.toggleIsLoading.bind(this)
   }
 
   static navigationOptions = ({ navigation, screenProps }) => {
@@ -36,9 +37,10 @@ class CreateStory extends Component {
   }
 
   submit(data) {
-    const { initialValues, coverImg } = this.props
-    const { navigate, dispatch } = this.props.navigation
-    const { createStory, updateStory, clearStory } = this.props.screenProps
+    const { props, toggleIsLoading } = this
+    const { initialValues, coverImg } = props
+    const { navigate, dispatch } = props.navigation
+    const { createStory, updateStory, clearStory } = props.screenProps
     const backAction = NavigationActions.back()
     let image = null
     if (initialValues && initialValues.coverImg) image = initialValues.coverImg
@@ -51,7 +53,7 @@ class CreateStory extends Component {
       type: "image/png"
     }
 
-    this.toggleIsLoading()  
+    toggleIsLoading()  
 
     RNS3.put(file, s3options).then(response => {
       if (response.status !== 201) {
@@ -62,7 +64,7 @@ class CreateStory extends Component {
           filename: file.name
         }
 
-        this.toggleIsLoading()
+        toggleIsLoading()
         initialValues ? updateStory(data) : createStory(data)
         dispatch(backAction)
       }
@@ -111,7 +113,7 @@ class CreateStory extends Component {
               text={buttonText}
               onPress={handleSubmit(submit)}
               position={'bottom'}
-              loadState={isLoading}/>
+              isLoading={isLoading}/>
           </View>
       </ScrollView>
     )

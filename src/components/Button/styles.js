@@ -17,6 +17,10 @@ export const styles = StyleSheet.create({
   buttonPress: {
     backgroundColor: '#446377',
   },
+  buttonDisabled: {
+    borderColor: '#bbb',
+    backgroundColor: '#bbb',
+  },
   text: {
     color: '#446377',
     fontWeight: 'bold',

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, TouchableWithoutFeedback, View } from 'react-native'
+import { Text, TouchableWithoutFeedback, View, ActivityIndicator } from 'react-native'
 import { styles } from './styles'
 
 export default class Button extends Component {
@@ -17,7 +17,8 @@ export default class Button extends Component {
   }
 
   render() {
-    const { text, onPress, position } = this.props
+    const { text, onPress, position, isLoading } = this.props
+    const { pressStatus } = this.state
     const { onPressIn, onPressOut } = this
 
     return (
@@ -28,12 +29,21 @@ export default class Button extends Component {
           onPressIn={onPressIn.bind(this)}
           onPressOut={onPressOut.bind(this)}
           >
-          <View style={this.state.pressStatus ? [styles.buttonPress, styles.button] : styles.button}>
-            <Text 
-              style={this.state.pressStatus ? [styles.text, styles.textPress] : styles.text}>
-              {text}
-            </Text>
-          </View>
+          { isLoading ? 
+            <View style={[styles.button, styles.buttonDisabled]}>
+              <ActivityIndicator
+                animating={isLoading}
+                size="small"
+                color="#fff" />
+            </View>
+            :
+            <View style={pressStatus ? [styles.buttonPress, styles.button] : styles.button}>
+              <Text
+                style={pressStatus ? [styles.text, styles.textPress] : styles.text}>
+                {text}
+              </Text>
+            </View>
+          }
         </TouchableWithoutFeedback>
       </View>
     )
