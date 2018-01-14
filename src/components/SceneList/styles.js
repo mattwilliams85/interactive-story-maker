@@ -11,7 +11,7 @@ export const styles = StyleSheet.create({
     borderRightWidth: 1,
     borderTopWidth: 0,
     borderBottomWidth: 1,
-    borderColor: '#888',
+    borderColor: '#ccc',
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',

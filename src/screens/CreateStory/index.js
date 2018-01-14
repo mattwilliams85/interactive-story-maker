@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { reduxForm, Field } from 'redux-form'
-import { Text, View, TouchableOpacity, ImageStore } from 'react-native'
+import { Text, View, ScrollView, TouchableOpacity, ImageStore } from 'react-native'
 import { connect } from 'react-redux'
 import { RNS3 } from 'react-native-aws3'
 import { globalStyles } from '../../styles/global'
@@ -77,7 +77,7 @@ class CreateStory extends Component {
     const isValid = value => false
 
     return (
-      <View style={[globalStyles.container, globalStyles.settingsWrap]}>
+      <ScrollView style={[globalStyles.container, globalStyles.settingsWrap]}>
           <Field
             name='coverImg'
             component={ImgUploader}
@@ -113,7 +113,7 @@ class CreateStory extends Component {
               position={'bottom'}
               loadState={isLoading}/>
           </View>
-      </View>
+      </ScrollView>
     )
   }
 }

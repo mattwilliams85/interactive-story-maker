@@ -39,7 +39,7 @@ class Home extends Component {
     const { props, handleTouch, state } = this
     const { screenProps } = props
     const { editStory, removeStory } = props.screenProps
-    const stories = objectToArray(props.stories.entities)
+    const stories = objectToArray(props.stories.entities).reverse()
 
     return (
       <View style={globalStyles.container}>
